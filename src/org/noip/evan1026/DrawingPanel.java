@@ -2,11 +2,8 @@ package org.noip.evan1026;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.MouseInfo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -17,6 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class DrawingPanel extends JPanel implements MouseListener, MouseMotionListener{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3773977354632678505L;
+	
 	ArrayList<Ball> balls = new ArrayList<Ball>();
 	boolean gravity = false;
 	int mouseX, mouseY;
@@ -87,12 +89,12 @@ public class DrawingPanel extends JPanel implements MouseListener, MouseMotionLi
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(arg0.getButton() == arg0.BUTTON1){
+		if(arg0.getButton() == MouseEvent.BUTTON1){
 			Random rand = new Random();
 			double number = rand.nextDouble();
 			balls.add(new Ball(arg0.getX(), arg0.getY(), rand.nextDouble() * 10, rand.nextDouble() * 10, number * 25 + 25, number * 50 + 50, new Color(rand.nextInt(200), rand.nextInt(200), rand.nextInt(200))));
 		}
-		else if(arg0.getButton() == arg0.BUTTON3){
+		else if(arg0.getButton() == MouseEvent.BUTTON3){
 			gravity = !gravity;
 		}
 	}
@@ -102,7 +104,7 @@ public class DrawingPanel extends JPanel implements MouseListener, MouseMotionLi
 	public void mouseExited(MouseEvent arg0) {}
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		if(arg0.getButton() == arg0.BUTTON1) ballAdder.start();
+		if(arg0.getButton() == MouseEvent.BUTTON1) ballAdder.start();
 	}
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
